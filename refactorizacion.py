@@ -103,7 +103,6 @@ while True:
     obstaculo_x, obstaculo_y = map(int, obstaculo.split())
     mapa_obj.agregar_obstaculo(obstaculo_x, obstaculo_y)
     
-
 # Encontrar el camino utilizando A*
 a_star = AStar(mapa_obj.mapa, inicio_x, inicio_y, final_x, final_y)
 camino = a_star.encontrar_camino()
@@ -128,4 +127,14 @@ while True:
 print("\nMapa actualizado:")
 mapa_obj.imprimir(inicio_x, inicio_y, final_x, final_y)
 
+# Ejecutar nuevamente el algoritmo A*
+print("\nBuscando nuevo camino...")
+a_star = AStar(mapa_obj.mapa, inicio_x, inicio_y, final_x, final_y)
+nuevo_camino = a_star.encontrar_camino()
 
+# Imprimir el nuevo camino encontrado (si existe)
+if nuevo_camino:
+    print("\nNuevo camino encontrado:")
+    mapa_obj.imprimir(inicio_x, inicio_y, final_x, final_y, path=nuevo_camino)
+else:
+    print("\nNo se encontró un nuevo camino válido.")
